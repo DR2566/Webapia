@@ -1,8 +1,7 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
-using Webapia.Application.Common;
-using Webapia.Application.Common.Errors;
 using Webapia.Application.Common.Pagination;
+using Webapia.Application.Common.Errors;
 using Webapia.Application.Features.Products.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Domain.Exceptions;

@@ -8,9 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia.Api", "Webapia.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia.Domain", "Webapia.Domain\Webapia.Domain.csproj", "{158A499E-394D-4198-8135-E07B57DEC220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapi.Application", "Webapi.Application\Webapi.Application.csproj", "{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia.Application", "Webapia.Application\Webapia.Application.csproj", "{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapi.Infrastructure", "Webapi.Infrastructure\Webapi.Infrastructure.csproj", "{E761E333-3433-4AEF-8455-8B2EE32D1F57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia.Infrastructure", "Webapia.Infrastructure\Webapia.Infrastructure.csproj", "{E761E333-3433-4AEF-8455-8B2EE32D1F57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

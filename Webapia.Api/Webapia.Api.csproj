@@ -84,8 +84,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Webapi.Application\Webapi.Application.csproj" />
-      <ProjectReference Include="..\Webapi.Infrastructure\Webapi.Infrastructure.csproj" />
+      <ProjectReference Include="..\Webapia.Application\Webapia.Application.csproj" />
+      <ProjectReference Include="..\Webapia.Infrastructure\Webapia.Infrastructure.csproj" />
       <ProjectReference Include="..\Webapia.Domain\Webapia.Domain.csproj" />
     </ItemGroup>
 

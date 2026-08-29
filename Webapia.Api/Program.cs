@@ -1,11 +1,11 @@
 using Asp.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
-using Webapia.Api.Middleware;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Application.Features.Products.Services;
 using Webapia.Infrastructure.Data;
 using Webapia.Infrastructure.Repositories;
+using Webapia.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
