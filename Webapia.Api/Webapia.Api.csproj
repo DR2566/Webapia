@@ -79,4 +79,22 @@
       <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="Controllers\.DS_Store" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Webapi.Application\Webapi.Application.csproj" />
+      <ProjectReference Include="..\Webapi.Infrastructure\Webapi.Infrastructure.csproj" />
+      <ProjectReference Include="..\Webapia.Domain\Webapia.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Asp.Versioning.Mvc" Version="10.2.1" />
+      <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="10.2.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.11" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.11" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    </ItemGroup>
+
 </Project>
