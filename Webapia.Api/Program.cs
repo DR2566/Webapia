@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Application.Features.Products.Services;
+using Webapia.Infrastructure;
 using Webapia.Infrastructure.Data;
 using Webapia.Infrastructure.Repositories;
 using Webapia.Api.Middleware;
@@ -37,19 +38,49 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Read the data source setting once so we can branch registration below.
+builder.Services.Configure<DataSourceOptions>(
+    builder.Configuration.GetSection(DataSourceOptions.SectionName));
 
-builder.Services.AddScoped<IProductRepository, EfProductRepository>();
+var dataSourceOptions = builder.Configuration
+    .GetSection(DataSourceOptions.SectionName)
+    .Get<DataSourceOptions>() ?? new DataSourceOptions();
+
+var healthChecksBuilder = builder.Services.AddHealthChecks();
+
+if (dataSourceOptions.Provider == DataProvider.Mock)
+{
+    // Mock mode: no SQL Server needed at all. Singleton so seeded/added
+    // data is shared and visible across requests for the app's lifetime.
+    builder.Services.AddSingleton<InMemoryProductRepository>();
+    builder.Services.AddScoped<IProductRepository>(sp =>
+        sp.GetRequiredService<InMemoryProductRepository>());
+}
+else
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    builder.Services.AddScoped<EfProductRepository>();
+    builder.Services.AddScoped<IProductRepository, EfProductRepository>();
+
+    // Only meaningful when AppDbContext is actually registered.
+    healthChecksBuilder.AddDbContextCheck<AppDbContext>();
+}
+
 builder.Services.AddScoped<IProductService, ProductService>();
-
-builder.Services.AddHealthChecks()
-    .AddDbContextCheck<AppDbContext>();
 
 var app = builder.Build();
 
-// Global exception handling should be the outermost middleware,
-// so it can catch anything thrown further down the pipeline.
+// migate db
+if (dataSourceOptions.Provider == DataProvider.Database)
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
+// Middlewares
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
