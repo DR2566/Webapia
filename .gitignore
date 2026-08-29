@@ -1,0 +1,87 @@
+# ============================================
+# Build & Output Directories
+# ============================================
+bin/
+obj/
+out/
+build/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+publish/
+
+# ============================================
+# Visual Studio / Roslyn / MSBuild
+# ============================================
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userlibraries
+*.vsp
+*.vspx
+*.sap
+*.azurePubxml
+
+# ============================================
+# JetBrains Rider & ReSharper
+# ============================================
+.idea/
+*.DotSettings.user
+_ReSharper.*/
+
+# ============================================
+# Visual Studio Code
+# ============================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ============================================
+# Secrets & Local Configuration Files
+# ============================================
+appsettings.Secrets.json
+appsettings.*.local.json
+*.env
+*.env.local
+
+# ============================================
+# Local Databases & Storage
+# ============================================
+*.mdf
+*.ldf
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================
+# Test Results & Code Coverage
+# ============================================
+[Tt]est[Rr]esults/
+*.coverage
+*.coveragexml
+
+# ============================================
+# NuGet & Dependencies
+# ============================================
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# ============================================
+# Operating System Files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
