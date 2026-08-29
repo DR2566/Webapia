@@ -1,6 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia", "Webapia\Webapia.csproj", "{B80DFDB1-D08D-46F8-8209-279D3656FC15}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{05B1D305-5E31-4C3B-8FE1-A09B419E7B41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DA882EEE-3236-46A3-8F7B-2ABFD6C40553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia.Api", "Webapia.Api\Webapia.Api.csproj", "{B0C72F69-7964-4106-B828-7D9550C82487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapia.Domain", "Webapia.Domain\Webapia.Domain.csproj", "{158A499E-394D-4198-8135-E07B57DEC220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapi.Application", "Webapi.Application\Webapi.Application.csproj", "{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webapi.Infrastructure", "Webapi.Infrastructure\Webapi.Infrastructure.csproj", "{E761E333-3433-4AEF-8455-8B2EE32D1F57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +18,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B80DFDB1-D08D-46F8-8209-279D3656FC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B80DFDB1-D08D-46F8-8209-279D3656FC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B80DFDB1-D08D-46F8-8209-279D3656FC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B80DFDB1-D08D-46F8-8209-279D3656FC15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C72F69-7964-4106-B828-7D9550C82487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C72F69-7964-4106-B828-7D9550C82487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C72F69-7964-4106-B828-7D9550C82487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C72F69-7964-4106-B828-7D9550C82487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{158A499E-394D-4198-8135-E07B57DEC220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{158A499E-394D-4198-8135-E07B57DEC220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{158A499E-394D-4198-8135-E07B57DEC220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{158A499E-394D-4198-8135-E07B57DEC220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6A4E5CF-1956-4076-B567-F6A4811E5AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E761E333-3433-4AEF-8455-8B2EE32D1F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E761E333-3433-4AEF-8455-8B2EE32D1F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E761E333-3433-4AEF-8455-8B2EE32D1F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E761E333-3433-4AEF-8455-8B2EE32D1F57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{158A499E-394D-4198-8135-E07B57DEC220} = {05B1D305-5E31-4C3B-8FE1-A09B419E7B41}
+		{A6A4E5CF-1956-4076-B567-F6A4811E5AC1} = {05B1D305-5E31-4C3B-8FE1-A09B419E7B41}
+		{E761E333-3433-4AEF-8455-8B2EE32D1F57} = {05B1D305-5E31-4C3B-8FE1-A09B419E7B41}
+		{B0C72F69-7964-4106-B828-7D9550C82487} = {05B1D305-5E31-4C3B-8FE1-A09B419E7B41}
 	EndGlobalSection
 EndGlobal
