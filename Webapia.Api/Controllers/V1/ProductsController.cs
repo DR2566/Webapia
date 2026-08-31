@@ -56,10 +56,12 @@ public class ProductsController : ControllerBase
     /// <param name="id">The unique identifier of the product to update.</param>
     /// <param name="dto">The new description. Pass a null value to clear the existing description.</param>
     /// <response code="204">The description was updated successfully.</response>
+    /// <response code="400">The request body is missing or malformed.</response>
     /// <response code="404">No product exists with the given id.</response>
     /// <response code="500">Internal server error occurred</response>
     [HttpPatch("{id:guid}/description")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UpdateDescription(Guid id, [FromBody] UpdateProductDescriptionDto dto)

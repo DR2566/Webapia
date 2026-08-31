@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Webapia.Application.Features.Products.Interfaces;
@@ -7,10 +8,25 @@ using Webapia.Infrastructure;
 using Webapia.Infrastructure.Data;
 using Webapia.Infrastructure.Repositories;
 using Webapia.Api.Middleware;
+using Webapia.Application.Common.Errors.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var message = string.Join(" | ", context.ModelState.Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage));
+
+        var response = new ErrorResponseDto(StatusCodes.Status400BadRequest, message);
+
+        return new BadRequestObjectResult(response);
+    };
+});
 
 builder.Services.AddApiVersioning(options =>
 {
@@ -80,6 +96,9 @@ if (dataSourceOptions.Provider == DataProvider.Database)
     db.Database.Migrate();
 }
 
+// use Middlewares for request processing
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 // show docs when dev
 if (app.Environment.IsDevelopment())
 {
@@ -91,10 +110,15 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// use Middlewares for request processing
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-
 app.MapControllers();
+
+app.MapFallback(context =>
+{
+    context.Response.StatusCode = StatusCodes.Status404NotFound;
+    context.Response.ContentType = "application/json";
+    var response = new ErrorResponseDto(StatusCodes.Status404NotFound, "The requested resource was not found.");
+    return context.Response.WriteAsJsonAsync(response);
+});
 
 app.MapHealthChecks("/health");
 
