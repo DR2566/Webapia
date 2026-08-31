@@ -1,4 +1,4 @@
-﻿namespace Webapia.Application.Common.Pagination;
+﻿namespace Webapia.Application.Common.Pagination.DTOs;
 
 public class PagedResultDto<T>
 {

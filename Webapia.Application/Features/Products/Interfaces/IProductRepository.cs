@@ -1,4 +1,4 @@
-using Webapia.Application.Common.Pagination;
+using Webapia.Application.Common.Pagination.DTOs;
 using Webapia.Domain.Entities;
 
 namespace Webapia.Application.Features.Products.Interfaces;

@@ -1,6 +1,6 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
-using Webapia.Application.Common.Errors;
+using Webapia.Application.Common.Errors.DTOs;
 using Webapia.Application.Features.Products.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
 

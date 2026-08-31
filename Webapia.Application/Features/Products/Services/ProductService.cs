@@ -1,4 +1,4 @@
-using Webapia.Application.Common.Pagination;
+using Webapia.Application.Common.Pagination.DTOs;
 using Webapia.Application.Features.Products.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Domain.Exceptions;

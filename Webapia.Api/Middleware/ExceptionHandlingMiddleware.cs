@@ -1,4 +1,4 @@
-using Webapia.Application.Common.Errors;
+using Webapia.Application.Common.Errors.DTOs;
 using Webapia.Domain.Exceptions;
 
 namespace Webapia.Api.Middleware;

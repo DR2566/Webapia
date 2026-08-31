@@ -1,5 +1,5 @@
 using System.Collections.Concurrent;
-using Webapia.Application.Common.Pagination;
+using Webapia.Application.Common.Pagination.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Domain.Entities;
 
