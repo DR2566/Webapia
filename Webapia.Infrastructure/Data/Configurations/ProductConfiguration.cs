@@ -28,10 +28,13 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasMaxLength(150)
             .IsRequired();
 
+        builder.Property(p => p.ImgUri)
+            .HasMaxLength(2048)
+            .IsRequired();
+        
         builder.Property(p => p.Description)
             .HasMaxLength(1000);
-
-
+        
         builder.HasData(
             new Product
             {
