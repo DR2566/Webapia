@@ -1,6 +1,6 @@
 using Webapia.Domain.Entities;
 
-namespace Webapia.Infrastructure.Data;
+namespace Webapia.Infrastructure.Data.Seeds;
 
 public static class ProductSeedData
 {

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Webapia.Domain.Entities;
+using Webapia.Infrastructure.Data.Seeds;
 
 namespace Webapia.Infrastructure.Data.Configurations;
 

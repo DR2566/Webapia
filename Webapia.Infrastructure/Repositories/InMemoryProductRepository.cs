@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using Webapia.Application.Common.Pagination.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Domain.Entities;
-using Webapia.Infrastructure.Data;
+using Webapia.Infrastructure.Data.Seeds;
 
 namespace Webapia.Infrastructure.Repositories;
 

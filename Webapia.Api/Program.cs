@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // ====================================================================================
-// === DataBase ===
+// === Database ===
 
 // Register DataSourceOptions with DI
 builder.Services.Configure<DataSourceOptions>(
@@ -126,7 +126,7 @@ if (dataSourceOptions.Provider == DataProvider.Database)
 // Uses custom GlobalExceptionHandler
 app.UseExceptionHandler();
 
-// ERROR HANDLER: Generates ProblemDetails payloads for empty 4xx/5xx responses (e.g., 404, 405)
+// ERROR HANDLER: Generates ErrorResponseDto payloads for empty 4xx/5xx responses (e.g., 404, 405)
 app.UseStatusCodePages(async statusCodeContext =>
 {
     var httpContext = statusCodeContext.HttpContext;
