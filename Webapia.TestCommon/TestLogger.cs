@@ -6,9 +6,15 @@ public class TestLogger<T> : ILogger<T>
 {
     public List<(LogLevel Level, Exception? Exception, string Message)> Logs { get; } = new();
 
-    public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+    {
+        return null;
+    }
 
-    public bool IsEnabled(LogLevel logLevel) => true;
+    public bool IsEnabled(LogLevel logLevel)
+    {
+        return true;
+    }
 
     public void Log<TState>(
         LogLevel logLevel,

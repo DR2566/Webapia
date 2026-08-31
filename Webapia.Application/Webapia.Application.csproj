@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Webapia.Domain\Webapia.Domain.csproj" />
+        <ProjectReference Include="..\Webapia.Domain\Webapia.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
-using Webapia.Application.Common.Pagination.DTOs;
 using Webapia.Application.Common.Errors.DTOs;
+using Webapia.Application.Common.Pagination.DTOs;
 using Webapia.Application.Features.Products.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
 using Webapia.Domain.Exceptions;
@@ -11,6 +11,7 @@ namespace Webapia.Api.Controllers.V2;
 [ApiController]
 [ApiVersion("2.0")]
 [Route("api/v{version:apiVersion}/[controller]")]
+[ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;
@@ -21,7 +22,7 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Retrieves a paginated list of available products.
+    ///     Retrieves a paginated list of available products.
     /// </summary>
     /// <param name="page">The page number to retrieve (1-based). Defaults to 1.</param>
     /// <param name="pageSize">The number of products per page (1-100). Defaults to 10.</param>
@@ -32,7 +33,6 @@ public class ProductsController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(PagedResultDto<ProductDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<PagedResultDto<ProductDto>>> GetPaged(
         [FromQuery] int page = 1,
         [FromQuery] int pageSize = 10)
@@ -44,7 +44,7 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Retrieves a single product by its unique identifier.
+    ///     Retrieves a single product by its unique identifier.
     /// </summary>
     /// <param name="id">The unique identifier of the product.</param>
     /// <returns>The requested product.</returns>
@@ -54,7 +54,6 @@ public class ProductsController : ControllerBase
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<ProductDto>> GetById(Guid id)
     {
         var product = await _service.GetByIdAsync(id);
@@ -62,7 +61,7 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Updates the description of an existing product.
+    ///     Updates the description of an existing product.
     /// </summary>
     /// <param name="id">The unique identifier of the product to update.</param>
     /// <param name="dto">The new description. Pass a null value to clear the existing description.</param>
@@ -74,7 +73,6 @@ public class ProductsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UpdateDescription(Guid id, [FromBody] UpdateProductDescriptionDto dto)
     {
         await _service.UpdateDescriptionAsync(id, dto.Description);

@@ -9,6 +9,7 @@ namespace Webapia.Api.Controllers.V1;
 [ApiController]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/[controller]")]
+[ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;
@@ -19,21 +20,20 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Retrieves all available products.
+    ///     Retrieves all available products.
     /// </summary>
     /// <returns>The full list of products.</returns>
     /// <response code="200">The list of products was retrieved successfully.</response>
     /// <response code="500">Internal server error occurred</response>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ProductDto>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll()
     {
         return Ok(await _service.GetAllAsync());
     }
 
     /// <summary>
-    /// Retrieves a single product by its unique identifier.
+    ///     Retrieves a single product by its unique identifier.
     /// </summary>
     /// <param name="id">The unique identifier of the product.</param>
     /// <returns>The requested product.</returns>
@@ -43,7 +43,6 @@ public class ProductsController : ControllerBase
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<ProductDto>> GetById(Guid id)
     {
         var product = await _service.GetByIdAsync(id);
@@ -51,7 +50,7 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
-    /// Updates the description of an existing product.
+    ///     Updates the description of an existing product.
     /// </summary>
     /// <param name="id">The unique identifier of the product to update.</param>
     /// <param name="dto">The new description. Pass a null value to clear the existing description.</param>
@@ -63,7 +62,6 @@ public class ProductsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UpdateDescription(Guid id, [FromBody] UpdateProductDescriptionDto dto)
     {
         await _service.UpdateDescriptionAsync(id, dto.Description);

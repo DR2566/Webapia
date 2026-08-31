@@ -1,4 +1,3 @@
-
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -74,7 +73,7 @@ public class ProductsControllerTests
         var act = async () => await _sut.GetById(id);
 
         // The controller doesn't catch this itself — it's the
-        // ExceptionHandlingMiddleware's job. This test documents
+        // GlobalExceptionHandler's job. This test documents
         // and locks in that division of responsibility.
         await act.Should().ThrowAsync<NotFoundException>();
     }

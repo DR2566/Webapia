@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-
 namespace Webapia.Infrastructure.Data;
 
 public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
@@ -11,8 +10,8 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         var configuration = new ConfigurationBuilder()
             .SetBasePath(GetApiProjectPath())
-            .AddJsonFile("appsettings.json", optional: false)
-            .AddJsonFile("appsettings.Development.json", optional: true)
+            .AddJsonFile("appsettings.json", false)
+            .AddJsonFile("appsettings.Development.json", true)
             .Build();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection")

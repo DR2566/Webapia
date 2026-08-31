@@ -33,7 +33,7 @@ public class ProductsControllerTests
         };
         _serviceMock.Setup(s => s.GetPagedAsync(1, 10)).ReturnsAsync(pagedResult);
 
-        var result = await _sut.GetPaged(page: 1, pageSize: 10);
+        var result = await _sut.GetPaged(1, 10);
 
         var okResult = result.Result.Should().BeOfType<OkObjectResult>().Subject;
         okResult.Value.Should().Be(pagedResult);
@@ -57,10 +57,10 @@ public class ProductsControllerTests
     }
 
     [Theory]
-    [InlineData(0, 10)]    // page below minimum
-    [InlineData(-1, 10)]   // negative page
-    [InlineData(1, 0)]     // pageSize below minimum
-    [InlineData(1, 101)]   // pageSize above maximum
+    [InlineData(0, 10)] // page below minimum
+    [InlineData(-1, 10)] // negative page
+    [InlineData(1, 0)] // pageSize below minimum
+    [InlineData(1, 101)] // pageSize above maximum
     public async Task GetPaged_WithInvalidParameters_ThrowsBadRequestException(int page, int pageSize)
     {
         var act = async () => await _sut.GetPaged(page, pageSize);
@@ -74,8 +74,8 @@ public class ProductsControllerTests
     }
 
     [Theory]
-    [InlineData(1, 1)]    // minimum boundary
-    [InlineData(1, 100)]  // maximum boundary
+    [InlineData(1, 1)] // minimum boundary
+    [InlineData(1, 100)] // maximum boundary
     public async Task GetPaged_WithBoundaryValidParameters_DoesNotThrow(int page, int pageSize)
     {
         _serviceMock.Setup(s => s.GetPagedAsync(page, pageSize))

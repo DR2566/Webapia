@@ -10,7 +10,7 @@ public class InMemoryProductRepository : IProductRepository
     private static readonly ConcurrentDictionary<Guid, Product> Store = new(
         new List<Product>
         {
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-6d80-732b-a63a-425edc702774"),
                 Name = "Monitor",
@@ -19,7 +19,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "27-inch 4K Display",
                 CreationTimestamp = 1750000000
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-7168-7a2f-801d-56bcc4917746"),
                 Name = "Keyboard",
@@ -28,7 +28,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Mechanical Keyboard",
                 CreationTimestamp = 1750000010
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-7550-7e53-afc7-a1c969e6176c"),
                 Name = "Gaming Mouse",
@@ -37,7 +37,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Wireless RGB Gaming Mouse",
                 CreationTimestamp = 1750000020
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-7938-7b3b-9494-b2dfb5f11928"),
                 Name = "Laptop",
@@ -46,7 +46,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "15-inch Performance Laptop",
                 CreationTimestamp = 1750000030
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-7d20-7910-bb53-ca101a408cec"),
                 Name = "Headphones",
@@ -55,7 +55,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Wireless Noise Cancelling Headphones",
                 CreationTimestamp = 1750000040
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-8108-76b8-b0b7-bfc4e5259d1d"),
                 Name = "Webcam",
@@ -64,7 +64,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Full HD USB Webcam",
                 CreationTimestamp = 1750000050
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-84f0-7822-b7a7-5d3bbb201c28"),
                 Name = "USB-C Hub",
@@ -73,7 +73,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "7-in-1 USB-C Hub",
                 CreationTimestamp = 1750000060
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-88d8-7634-b067-d1e0935b1005"),
                 Name = "External SSD",
@@ -82,7 +82,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "1TB Portable SSD",
                 CreationTimestamp = 1750000070
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-8cc0-7d77-8198-ec1cd446c538"),
                 Name = "Gaming Chair",
@@ -91,7 +91,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Ergonomic Gaming Chair",
                 CreationTimestamp = 1750000080
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-90a8-7b30-b95b-1948e4692bcb"),
                 Name = "Desk Lamp",
@@ -100,7 +100,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "LED Desk Lamp",
                 CreationTimestamp = 1750000090
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-9490-757c-953c-ad77c495bc14"),
                 Name = "Smartphone",
@@ -109,7 +109,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "128GB 5G Smartphone",
                 CreationTimestamp = 1750000100
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-9878-71bc-9148-22ad0dc5df84"),
                 Name = "Tablet",
@@ -118,7 +118,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "11-inch Tablet",
                 CreationTimestamp = 1750000110
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-9c60-7e4d-ac92-d1a700cedc55"),
                 Name = "Smart Watch",
@@ -127,7 +127,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Fitness and Health Tracking",
                 CreationTimestamp = 1750000120
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-a048-7f61-8b5a-d4ab0b923845"),
                 Name = "Bluetooth Speaker",
@@ -136,7 +136,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Portable Bluetooth Speaker",
                 CreationTimestamp = 1750000130
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-a430-7f0f-b622-c2be8e9947e9"),
                 Name = "Microphone",
@@ -145,7 +145,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "USB Condenser Microphone",
                 CreationTimestamp = 1750000140
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-a818-7a75-8c77-8f7d76aafcda"),
                 Name = "Graphics Card",
@@ -154,7 +154,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "High Performance Graphics Card",
                 CreationTimestamp = 1750000150
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-ac00-7f69-b711-a64c0c7638b1"),
                 Name = "Processor",
@@ -163,7 +163,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "8-Core Desktop Processor",
                 CreationTimestamp = 1750000160
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-afe8-7451-baa4-d7240366440d"),
                 Name = "RAM",
@@ -172,7 +172,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "32GB DDR5 Memory Kit",
                 CreationTimestamp = 1750000170
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-b3d0-7ec4-8c9c-7ae4b141ae6c"),
                 Name = "Motherboard",
@@ -181,7 +181,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "ATX Gaming Motherboard",
                 CreationTimestamp = 1750000180
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-b7b8-70c7-ace9-1781ae65ec84"),
                 Name = "Power Supply",
@@ -190,7 +190,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "750W Modular Power Supply",
                 CreationTimestamp = 1750000190
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-bba0-7fc4-b146-9ac145fab374"),
                 Name = "PC Case",
@@ -199,7 +199,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Tempered Glass ATX Case",
                 CreationTimestamp = 1750000200
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-bf88-7671-b161-d56ed2220741"),
                 Name = "Router",
@@ -208,7 +208,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Wi-Fi 6 Router",
                 CreationTimestamp = 1750000210
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-c370-708e-9be1-e7922d4e09c1"),
                 Name = "Printer",
@@ -217,7 +217,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Wireless Color Printer",
                 CreationTimestamp = 1750000220
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-c758-7c36-b501-267d1c97ba9b"),
                 Name = "Projector",
@@ -226,7 +226,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Full HD Home Projector",
                 CreationTimestamp = 1750000230
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-cb40-7338-839e-307fab222384"),
                 Name = "VR Headset",
@@ -235,7 +235,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Virtual Reality Headset",
                 CreationTimestamp = 1750000240
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-cf28-7889-ad48-b74da2898f9f"),
                 Name = "Game Controller",
@@ -244,7 +244,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Wireless Game Controller",
                 CreationTimestamp = 1750000250
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-d310-713e-bd2f-6951020f5515"),
                 Name = "Mechanical Keypad",
@@ -253,7 +253,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Programmable Mechanical Keypad",
                 CreationTimestamp = 1750000260
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-d6f8-7a30-85a3-692e8858e7ff"),
                 Name = "Laptop Stand",
@@ -262,7 +262,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Adjustable Aluminum Laptop Stand",
                 CreationTimestamp = 1750000270
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-dae0-7411-9749-67c73d2cec66"),
                 Name = "Wireless Charger",
@@ -271,7 +271,7 @@ public class InMemoryProductRepository : IProductRepository
                 Description = "Fast Wireless Charging Pad",
                 CreationTimestamp = 1750000280
             },
-            new Product
+            new()
             {
                 Id = Guid.Parse("01a04c51-dec8-77da-92fe-f30057578d28"),
                 Name = "USB Flash Drive",
@@ -317,7 +317,14 @@ public class InMemoryProductRepository : IProductRepository
         return Task.CompletedTask;
     }
 
-    public void Remove(Product product) => Store.TryRemove(product.Id, out _);
+    public void Remove(Product product)
+    {
+        Store.TryRemove(product.Id, out _);
+    }
 
-    public Task SaveChangesAsync() => Task.CompletedTask; // no-op: writes above are already applied
+    public Task SaveChangesAsync()
+    {
+        return Task.CompletedTask;
+        // no-op: writes above are already applied
+    }
 }
