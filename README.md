@@ -114,6 +114,70 @@ documents. Each endpoint includes a summary, parameter descriptions, and documen
 
 A health check endpoint is also available at `/health`.
 
+## Logging
+
+The API uses Serilog for structured application logging.
+
+### Defaults
+
+The runtime logging configuration is defined in `Webapia.Api/appsettings.json` and can be overridden by
+`Webapia.Api/appsettings.Development.json` for local development.
+
+The default setup writes logs to both the console and a rolling file in the `logs` folder:
+
+```json
+"Serilog": {
+  "MinimumLevel": {
+    "Default": "Information",
+    "Override": {
+      "Microsoft": "Warning",
+      "Microsoft.AspNetCore": "Warning",
+      "System": "Warning"
+    }
+  },
+  "WriteTo": [
+    { "Name": "Console" },
+    {
+      "Name": "File",
+      "Args": {
+        "path": "logs/webapia-.log",
+        "rollingInterval": "Day",
+        "retainedFileCountLimit": 14
+      }
+    }
+  ]
+}
+```
+
+This produces daily log files such as:
+
+```text
+logs/webapia-20260831.log
+logs/webapia-20260901.log
+```
+
+The `rollingInterval` setting creates a new log file each day, and `retainedFileCountLimit` keeps the last 14 files before deleting older ones.
+
+### Request logging
+
+The app enables request logging through Serilog middleware, which automatically records request telemetry such as:
+
+```text
+[INF] HTTP GET /api/v2/Products responded 200 in 68.4657 ms
+```
+
+These entries are created automatically by the request pipeline and do not need to be manually called from controllers.
+
+### Exception logging
+
+Unhandled domain and application exceptions are logged in `GlobalExceptionHandler`, which writes structured error details to the configured Serilog sinks.
+
+```csharp
+_logger.LogError(exception, "An exception occurred: {Message}", exception.Message);
+```
+
+This gives both a human-readable exception message and the stack trace, both preserved in the configured output targets.
+
 ## Error handling
 
 Every error path in the API — regardless of where it originates — is returned in a single consistent shape:

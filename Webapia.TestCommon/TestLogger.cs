@@ -4,7 +4,7 @@ namespace Webapia.TestCommon;
 
 public class TestLogger<T> : ILogger<T>
 {
-    public List<(LogLevel Level, Exception? Exception, string Message)> Logs { get; } = new();
+    public List<(LogLevel Level, Exception? Exception, string Message)> Logs { get; } = [];
 
     public IDisposable? BeginScope<TState>(TState state) where TState : notnull
     {

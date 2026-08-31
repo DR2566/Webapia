@@ -3,6 +3,7 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using Serilog;
 using Webapia.Api.ExceptionHandlers;
 using Webapia.Application.Common.Errors.DTOs;
 using Webapia.Application.Features.Products.Interfaces;
@@ -13,6 +14,11 @@ using Webapia.Infrastructure.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, services, config) =>
+{
+    config.ReadFrom.Configuration(context.Configuration);
+});
 
 
 // ====================================================================================
@@ -110,6 +116,9 @@ builder.Services.AddScoped<IProductService, ProductService>();
 // ====================================================================================
 
 var app = builder.Build();
+
+Directory.CreateDirectory(Path.Combine(AppContext.BaseDirectory, "logs"));
+app.UseSerilogRequestLogging();
 
 // ====================================================================================
 
