@@ -12,7 +12,7 @@ using Webapia.Infrastructure.Data;
 namespace Webapia.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260829134227_init")]
+    [Migration("20260831111910_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -43,7 +43,8 @@ namespace Webapia.Infrastructure.Migrations
 
                     b.Property<string>("ImgUri")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
 
                     b.Property<string>("Name")
                         .IsRequired()

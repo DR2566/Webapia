@@ -20,7 +20,7 @@ namespace Webapia.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
                     CreationTimestamp = table.Column<int>(type: "int", nullable: false, defaultValueSql: "DATEDIFF(SECOND, '1970-01-01', SYSUTCDATETIME())"),
                     Name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    ImgUri = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImgUri = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
                 },
