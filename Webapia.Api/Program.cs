@@ -11,6 +11,7 @@ using Webapia.Infrastructure;
 using Webapia.Infrastructure.Data;
 using Webapia.Infrastructure.Repositories;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -54,7 +55,10 @@ builder.Services.AddApiVersioning(options =>
 {
     options.ReportApiVersions = true;
     options.DefaultApiVersion = new ApiVersion(1, 0);
-}).AddApiExplorer(options =>
+    options.ApiVersionReader = new UrlSegmentApiVersionReader();
+})
+.AddMvc()
+.AddApiExplorer(options =>
 {
     options.GroupNameFormat = "'v'VVV";
     options.SubstituteApiVersionInUrl = true;
