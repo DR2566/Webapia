@@ -26,28 +26,27 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Webapia API v1",
-        Version = "v1"
-    });
-    options.SwaggerDoc("v2", new OpenApiInfo
-    {
-        Title = "Webapia API v2",
-        Version = "v2"
-    });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Webapia API v1", Version = "v1" });
+    options.SwaggerDoc("v2", new OpenApiInfo { Title = "Webapia API v2", Version = "v2" });
+
+    // Feed the compiler-generated XML doc comments (see .csproj) into Swagger
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
 });
 
-// Read the data source setting once so we can branch registration below.
+// Register DataSourceOptions with DI so other classes can inject IOptions<DataSourceOptions>
 builder.Services.Configure<DataSourceOptions>(
     builder.Configuration.GetSection(DataSourceOptions.SectionName));
 
+// Read immediately to decide repository/DbContext registration below
 var dataSourceOptions = builder.Configuration
     .GetSection(DataSourceOptions.SectionName)
     .Get<DataSourceOptions>() ?? new DataSourceOptions();
 
 var healthChecksBuilder = builder.Services.AddHealthChecks();
 
+// decide the db source & register
 if (dataSourceOptions.Provider == DataProvider.Mock)
 {
     // Mock mode: no SQL Server needed at all. Singleton so seeded/added
@@ -63,13 +62,14 @@ else
 
     builder.Services.AddScoped<EfProductRepository>();
     builder.Services.AddScoped<IProductRepository, EfProductRepository>();
-
-    // Only meaningful when AppDbContext is actually registered.
+    
     healthChecksBuilder.AddDbContextCheck<AppDbContext>();
 }
 
+// register Services
 builder.Services.AddScoped<IProductService, ProductService>();
 
+// BUILD THE APP
 var app = builder.Build();
 
 // migate db
@@ -80,9 +80,7 @@ if (dataSourceOptions.Provider == DataProvider.Database)
     db.Database.Migrate();
 }
 
-// Middlewares
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-
+// show docs when dev
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -92,6 +90,9 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v2/swagger.json", "Webapia API v2");
     });
 }
+
+// use Middlewares for request processing
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 
